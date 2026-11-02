@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 20th Birthday Deekshitha! 💖 | Bubu & Dudu</title>
+  <style>
+    /* ========================================================
+       1. GLOBAL RESET & DARK GLASSMORPHISM THEME
+       ======================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    body {
+      background-color: #080710;
+      color: #f3f4f6;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+    }
+
+    /* Ambient Cosmic Lighting Orbs */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+      animation: driftOrb 12s ease-in-out infinite alternate;
+    }
+
+    .orb-1 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, #ff5e7e, #fa709a);
+      top: -100px;
+      left: -80px;
+    }
+
+    .orb-2 {
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, #00c6ff, #0072ff);
+      bottom: -100px;
+      right: -80px;
+      animation-delay: -6s;
+    }
+
+    .orb-3 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, #f39c12, #e74c3c);
+      top: 40%;
+      left: 65%;
+      opacity: 0.35;
+      animation-delay: -3s;
+    }
+
+    @keyframes driftOrb {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(50px) scale(1.15); }
+    }
+
+    /* Shared Glassmorphic Container */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 28px;
+      padding: 36px 28px;
+      width: 90%;
+      max-width: 580px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7),
+                  inset 0 1px 1px rgba(255, 255, 255, 0.3);
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      margin: 20px auto;
+    }
+
+    /* Section Control */
+    .step-section {
+      display: none;
+      opacity: 0;
+      transform: translateY(25px) scale(0.97);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 100%;
+      max-width: 620px;
+      margin: auto;
+      padding: 40px 16px;
+      z-index: 10;
+    }
+
+    .step-section.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Badges & Typography */
+    .glass-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #ff99b0;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    h1, h2, h3 {
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      line-height: 1.3;
+    }
+
+    p {
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    /* Standard Interactive Button */
+    .action-btn {
+      font-family: inherit;
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 14px 34px;
+      border-radius: 50px;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      background: linear-gradient(135deg, #ff5e7e 0%, #ff839d 100%);
+      color: #ffffff;
+      box-shadow: 0 10px 25px rgba(255, 94, 126, 0.45);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      margin-top: 22px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .action-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 14px 30px rgba(255, 94, 126, 0.6);
+    }
+
+    .action-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* ========================================================
+       STEP 1: WELCOME SCREEN
+       ======================================================== */
+    .bubu-dudu-banner {
+      width: 220px;
+      height: 180px;
+      margin: 0 auto 20px;
+      filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5));
+    }
+
+    /* ========================================================
+       STEP 2: 3D INTERACTIVE ENVELOPE
+       ======================================================== */
+    .envelope-box {
+      perspective: 1000px;
+      width: 280px;
+      height: 180px;
+      margin: 30px auto;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .envelope-base {
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      overflow: visible;
+    }
+
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 140px solid transparent;
+      border-right: 140px solid transparent;
+      border-top: 100px solid rgba(255, 140, 160, 0.85);
+      transform-origin: top center;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 5;
+    }
+
+    .envelope-box.opened .envelope-flap {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+
+    .envelope-seal {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 44px;
+      height: 44px;
+      background: #ff4d6d;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 5px 15px rgba(255, 77, 109, 0.6);
+      z-index: 6;
+      transition: opacity 0.4s ease;
+    }
+
+    .envelope-box.opened .envelope-seal {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* ========================================================
+       STEP 3: TYPEWRITER LETTER
+       ======================================================== */
+    .letter-text {
+      font-size: 1.12rem;
+      line-height: 1.8;
+      color: #f9fafb;
+      min-height: 160px;
+      text-align: left;
+      border-left: 3px solid #ff5e7e;
+      padding-left: 16px;
+      margin: 20px 0;
+      white-space: pre-wrap;
+    }
+
+    .cursor-blink {
+      display: inline-block;
+      width: 8px;
+      height: 1.2rem;
+      background: #ff5e7e;
+      margin-left: 4px;
+      animation: blink 0.7s infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* ========================================================
+       STEP 4: RADHA KRISHNA SPECIAL BLESSING & POLAROID
+       ======================================================== */
+    .radha-krishna-card {
+      border: 1px solid rgba(0, 242, 254, 0.4);
+      background: radial-gradient(circle at top, rgba(0, 198, 255, 0.15), rgba(8, 7, 16, 0.85));
+      box-shadow: 0 20px 50px rgba(0, 198, 255, 0.25);
+    }
+
+    .peacock-icon {
+      width: 50px;
+      height: 50px;
+      margin: 0 auto 10px;
+      filter: drop-shadow(0 0 12px #00f2fe);
+    }
+
+    .radha-krishna-quote {
+      font-style: italic;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: #e0f7fa;
+      margin: 18px 0 24px;
+      text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+    }
+
+    /* Polaroid Glass Frame */
+    .polaroid-frame {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 14px 14px 34px 14px;
+      border-radius: 8px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+      transform: rotate(-2deg);
+      transition: transform 0.3s ease;
+      width: 250px;
+      margin: 0 auto 20px;
+    }
+
+    .polaroid-frame:hover {
+      transform: rotate(0deg) scale(1.03);
+    }
+
+    .polaroid-frame img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+      background: #222;
+    }
+
+    .polaroid-caption {
+      color: #1f2937;
+      font-weight: 700;
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    /* ========================================================
+       STEP 5: GRAND FINALE DASHBOARD & INTERACTIVE WIDGET
+       ======================================================== */
+    /* 3D Flip Card Container */
+    .flip-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      width: 100%;
+      margin: 24px 0 36px;
+    }
+
+    .flip-card {
+      perspective: 1000px;
+      height: 190px;
+      cursor: pointer;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner,
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+      background: rgba(255, 94, 126, 0.22);
+      border-color: rgba(255, 140, 160, 0.4);
+      color: #ffffff;
+    }
+
+    /* --- "ARE YOU LOVING ME?" WIDGET --- */
+    .love-widget {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      padding: 26px 18px;
+      margin-top: 15px;
+      position: relative;
+    }
+
+    .widget-characters {
+      width: 160px;
+      height: 130px;
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .widget-characters img, .widget-characters svg {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .btn-options-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      min-height: 52px;
+      position: relative;
+      margin-top: 14px;
+    }
+
+    .btn-yes-widget {
+      background: linear-gradient(135deg, #ff4d6d, #ff758f);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4);
+      transition: transform 0.2s ease;
+      z-index: 5;
+    }
+
+    .btn-yes-widget:hover {
+      transform: scale(1.08);
+    }
+
+    /* Evasive Runaway "No" Button */
+    .btn-no-widget {
+      background: rgba(255, 255, 255, 0.12);
+      color: #e5e7eb;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      z-index: 999;
+      touch-action: none;
+      transition: left 0.15s ease-out, top 0.15s ease-out;
+    }
+
+    .btn-no-widget.running {
+      position: fixed !important;
+      margin: 0 !important;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 77, 109, 0.4);
+      border-color: #ff4d6d;
+      background: rgba(25, 10, 20, 0.95);
+    }
+
+    /* Love Widget Success View */
+    .love-success-view {
+      display: none;
+      animation: popSuccess 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    @keyframes popSuccess {
+      0% { opacity: 0; transform: scale(0.85); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* ========================================================
+       CONFETTI SYSTEM (Math.cos & Math.sin driven)
+       ======================================================== */
+    .confetti-piece {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      border-radius: 3px;
+      animation: shootConfetti 1.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
+    @keyframes shootConfetti {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1) rotate(0deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) scale(0.2) rotate(720deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Glow Orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- ========================================================
+       STEP 1: WELCOME SCREEN
+       ======================================================== -->
+  <section class="step-section active" id="step1">
+    <div class="glass-card">
+      <span class="glass-badge">Milestone 20th Birthday 🌸</span>
+      
+      <!-- Bubu & Dudu Vector Art -->
+      <div class="bubu-dudu-banner">
+        <svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg">
+          <!-- Bubu (Bear) -->
+          <g transform="translate(25, 25)">
+            <circle cx="30" cy="35" r="15" fill="#c49a6c" />
+            <circle cx="85" cy="35" r="15" fill="#c49a6c" />
+            <ellipse cx="58" cy="115" rx="38" ry="34" fill="#c49a6c" />
+            <ellipse cx="58" cy="65" rx="42" ry="36" fill="#d8ab79" />
+            <circle cx="34" cy="72" r="6" fill="#ff9999" opacity="0.6" />
+            <circle cx="82" cy="72" r="6" fill="#ff9999" opacity="0.6" />
+            <circle cx="44" cy="62" r="4.5" fill="#2d1b0d" />
+            <circle cx="72" cy="62" r="4.5" fill="#2d1b0d" />
+            <ellipse cx="58" cy="73" rx="11" ry="8" fill="#f5e6d3" />
+            <polygon points="55,70 61,70 58,74" fill="#2d1b0d" />
+          </g>
+          <!-- Dudu (Panda) -->
+          <g transform="translate(100, 25)">
+            <circle cx="45" cy="35" r="15" fill="#1e1e24" />
+            <circle cx="100" cy="35" r="15" fill="#1e1e24" />
+            <ellipse cx="72" cy="115" rx="38" ry="34" fill="#ffffff" />
+            <path d="M 40 102 C 40 85, 105 85, 105 102 C 105 125, 40 125, 40 102 Z" fill="#1e1e24" />
+            <ellipse cx="72" cy="65" rx="42" ry="36" fill="#ffffff" />
+            <ellipse cx="56" cy="62" rx="10" ry="13" fill="#1e1e24" transform="rotate(-15 56 62)" />
+            <ellipse cx="88" cy="62" rx="10" ry="13" fill="#1e1e24" transform="rotate(15 88 62)" />
+            <circle cx="56" cy="62" r="3" fill="#ffffff" />
+            <circle cx="88" cy="62" r="3" fill="#ffffff" />
+            <circle cx="45" cy="74" r="6" fill="#ffb4b4" opacity="0.7" />
+            <circle cx="99" cy="74" r="6" fill="#ffb4b4" opacity="0.7" />
+            <ellipse cx="72" cy="72" rx="4" ry="3" fill="#1e1e24" />
+          </g>
+          <!-- Love Heart -->
+          <path d="M120 25 C112 10, 92 12, 92 28 C92 45, 120 62, 120 62 C120 62, 148 45, 148 28 C148 12, 128 10, 120 25 Z" fill="#ff4d6d">
+            <animate attributeName="transform" type="scale" values="1; 1.15; 1" dur="1s" repeatCount="indefinite" transform-origin="120 35"/>
+          </path>
+        </svg>
+      </div>
+
+      <h1 style="font-size: 1.85rem; margin-bottom: 12px;">Hey Deekshitha! 💖</h1>
+      <p>A handcrafted celestial birthday celebration featuring your favorite duo, Bubu and Dudu.</p>
+
+      <button class="action-btn" id="startBtn">
+        Tap to Start, Deekshitha ✨
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       STEP 2: INTERACTIVE ENVELOPE
+       ======================================================== -->
+  <section class="step-section" id="step2">
+    <div class="glass-card">
+      <span class="glass-badge">Special Delivery 💌</span>
+      <h2 style="font-size: 1.55rem; margin-bottom: 8px;">A Letter For Your 20th</h2>
+      <p>Tap the wax seal to unlock the secret message inside.</p>
+
+      <div class="envelope-box" id="envelopeBox">
+        <div class="envelope-flap"></div>
+        <div class="envelope-seal">💌</div>
+        <div class="envelope-base"></div>
+      </div>
+
+      <p style="font-size: 0.85rem; color: #9ca3af; margin-top: 10px;">(Tap the envelope to open)</p>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       STEP 3: TYPEWRITER LETTER
+       ======================================================== -->
+  <section class="step-section" id="step3">
+    <div class="glass-card">
+      <span class="glass-badge">Words from the Heart ✍️</span>
+      <h2 style="font-size: 1.45rem;">Happy 20th Birthday!</h2>
+
+      <div class="letter-text" id="typewriterTarget"><span class="cursor-blink"></span></div>
+
+      <button class="action-btn" id="toStep4Btn" style="display: none;">
+        Continue to Divine Blessing 🪶✨
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       STEP 4: RADHA KRISHNA SPECIAL WISH PAGE
+       ======================================================== -->
+  <section class="step-section" id="step4">
+    <div class="glass-card radha-krishna-card">
+      <!-- Glowing Peacock Feather Icon -->
+      <svg class="peacock-icon" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2C8 6 4 12 12 22C20 12 16 6 12 2Z"></path>
+        <circle cx="12" cy="10" r="3" fill="#00c6ff"></circle>
+        <circle cx="12" cy="10" r="1.5" fill="#f1c40f"></circle>
+      </svg>
+
+      <span class="glass-badge" style="color: #00f2fe; border-color: rgba(0, 242, 254, 0.4);">
+        Radha Krishna Blessings 🙏🪶
+      </span>
+
+      <p class="radha-krishna-quote">
+        "May Lord Krishna's divine light brighten your path and fill your days with happiness. May our bond be as eternal as Radha's devotion and Krishna's charm, and may we dance through life just as they danced through love."
+      </p>
+
+      <!-- Polaroid Container -->
+      <div class="polaroid-frame">
+        <img 
+          src="us.jpg" 
+          alt="Deekshitha Memory" 
+          onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600&auto=format&fit=crop&q=80';"
+        />
+        <div class="polaroid-caption">Deekshitha & Bestie ♾️</div>
+      </div>
+
+      <button class="action-btn" id="toStep5Btn" style="background: linear-gradient(135deg, #00c6ff, #0072ff); box-shadow: 0 10px 25px rgba(0, 198, 255, 0.4);">
+        Enter Grand Finale 🎉
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       STEP 5: GRAND FINALE DASHBOARD & INTERACTIVE WIDGET
+       ======================================================== -->
+  <section class="step-section" id="step5">
+    <div class="glass-card" style="max-width: 650px;">
+      <span class="glass-badge">Celebration Arena 🎈</span>
+      <h2 style="font-size: 1.7rem; margin-bottom: 6px;">Happy 20th, Deekshitha! 🥳</h2>
+      <p style="font-size: 0.95rem; margin-bottom: 15px;">Hover or tap the memory cards below to reveal secret notes:</p>
+
+      <!-- 3D Flip Memory Cards -->
+      <div class="flip-grid">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span style="font-size: 2.2rem; margin-bottom: 8px;">🐻</span>
+              <h3 style="font-size: 1.1rem;">Bubu's Note</h3>
+              <p style="font-size: 0.85rem; color: #d1d5db; margin-top: 5px;">(Tap to Flip)</p>
+            </div>
+            <div class="flip-card-back">
+              <p style="font-size: 0.95rem; font-weight: 600;">Always remember how bright your smile shines! Don't let anyone dim it in your 20s. 🌟</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span style="font-size: 2.2rem; margin-bottom: 8px;">🐼</span>
+              <h3 style="font-size: 1.1rem;">Dudu's Note</h3>
+              <p style="font-size: 0.85rem; color: #d1d5db; margin-top: 5px;">(Tap to Flip)</p>
+            </div>
+            <div class="flip-card-back">
+              <p style="font-size: 0.95rem; font-weight: 600;">Whenever life feels heavy, you know who has your back forever. No matter what! 🫂💖</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRENDING "ARE YOU LOVING ME?" INTERACTIVE WIDGET -->
+      <div class="love-widget">
+        <!-- Initial Question View -->
+        <div id="widgetAskView">
+          <span class="glass-badge" style="color: #ff758f; margin-bottom: 10px;">Quick Question ✨</span>
+          
+          <div class="widget-characters">
+            <svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg">
+              <g transform="translate(25, 25)">
+                <circle cx="30" cy="35" r="14" fill="#c49a6c" />
+                <circle cx="85" cy="35" r="14" fill="#c49a6c" />
+                <ellipse cx="58" cy="115" rx="38" ry="34" fill="#c49a6c" />
+                <ellipse cx="58" cy="65" rx="42" ry="36" fill="#d8ab79" />
+                <circle cx="34" cy="72" r="6" fill="#ff9999" opacity="0.6" />
+                <circle cx="82" cy="72" r="6" fill="#ff9999" opacity="0.6" />
+                <circle cx="44" cy="62" r="4.5" fill="#2d1b0d" />
+                <circle cx="72" cy="62" r="4.5" fill="#2d1b0d" />
+                <ellipse cx="58" cy="73" rx="10" ry="7" fill="#f5e6d3" />
+              </g>
+              <g transform="translate(100, 25)">
+                <circle cx="45" cy="35" r="14" fill="#1e1e24" />
+                <circle cx="100" cy="35" r="14" fill="#1e1e24" />
+                <ellipse cx="72" cy="115" rx="38" ry="34" fill="#ffffff" />
+                <path d="M 40 102 C 40 85, 105 85, 105 102 C 105 125, 40 125, 40 102 Z" fill="#1e1e24" />
+                <ellipse cx="72" cy="65" rx="42" ry="36" fill="#ffffff" />
+                <ellipse cx="56" cy="62" rx="9" ry="12" fill="#1e1e24" transform="rotate(-15 56 62)" />
+                <ellipse cx="88" cy="62" rx="9" ry="12" fill="#1e1e24" transform="rotate(15 88 62)" />
+                <circle cx="56" cy="62" r="3" fill="#ffffff" />
+                <circle cx="88" cy="62" r="3" fill="#ffffff" />
+                <circle cx="45" cy="74" r="6" fill="#ffb4b4" opacity="0.7" />
+                <circle cx="99" cy="74" r="6" fill="#ffb4b4" opacity="0.7" />
+              </g>
+            </svg>
+          </div>
+
+          <h3 id="widgetHeading" style="font-size: 1.45rem; margin-bottom: 6px;">Do you love me, bestie?</h3>
+          <p id="widgetSub" style="font-size: 0.95rem; color: #d1d5db;">Deekshitha, answer honestly! 🐼✨</p>
+
+          <div class="btn-options-row">
+            <button class="btn-yes-widget" id="yesLoveBtn">Yes! 💖</button>
+            <button class="btn-no-widget" id="noLoveBtn">No</button>
+          </div>
+        </div>
+
+        <!-- Celebratory State When She Clicks 'Yes' -->
+        <div class="love-success-view" id="widgetSuccessView">
+          <div class="widget-characters" style="height: 180px;">
+            <img 
+              src="https://media.tenor.com/tTz9QeZf-Q8AAAAi/bubu-dudu-sseeyall.gif" 
+              alt="Happy Bubu Dudu"
+              onerror="this.src='https://media.tenor.com/7dZzI166lGAAAAAi/tkthao219-bubududu.gif';"
+            />
+          </div>
+          <h2 style="color: #ff85a1; font-size: 1.55rem; margin: 10px 0;">I knew it! I love you the most! ❤️</h2>
+          <p style="font-size: 1.05rem; color: #f3f4f6;">Best friends forever, Deekshitha! You're stuck with me throughout your 20s and beyond! 🫂🐻🐼✨</p>
+        </div>
+      </div>
+
+      <p style="font-size: 0.85rem; color: #9ca3af; margin-top: 25px;">
+        💡 Click anywhere on the screen at any time to shoot confetti!
+      </p>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       JAVASCRIPT LOGIC & INTERACTIONS
+       ======================================================== -->
+  <script>
+    // --- 1. PROCEDURAL MUSIC SYNTHESIZER (Web Audio API) ---
+    let audioCtx = null;
+    function playMelody() {
+      if (audioCtx) return;
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+        
+        // Sweet music-box lullaby scale: C5, E5, G5, A5, C6, G5, E5, D5
+        const melody = [
+          { f: 523.25, d: 0.4 }, { f: 659.25, d: 0.4 }, { f: 783.99, d: 0.4 },
+          { f: 880.00, d: 0.6 }, { f: 1046.50, d: 0.5 }, { f: 783.99, d: 0.4 },
+          { f: 659.25, d: 0.4 }, { f: 587.33, d: 0.7 }
+        ];
+
+        let time = audioCtx.currentTime + 0.1;
+        function scheduleLoop() {
+          melody.forEach(note => {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(note.f, time);
+
+            gain.gain.setValueAtTime(0.001, time);
+            gain.gain.exponentialRampToValueAtTime(0.08, time + 0.05);
+            gain.gain.exponentialRampToValueAtTime(0.0001, time + note.d);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start(time);
+            osc.stop(time + note.d);
+            time += note.d;
+          });
+          // Repeat cycle
+          setTimeout(scheduleLoop, (time - audioCtx.currentTime) * 1000);
+        }
+        scheduleLoop();
+      } catch (err) {
+        console.warn("AudioContext init skipped: ", err);
+      }
+    }
+
+    // --- 2. STEP NAVIGATION CONTROLLER ---
+    function navigateToStep(currentId, nextId) {
+      const current = document.getElementById(currentId);
+      const next = document.getElementById(nextId);
+      
+      current.style.opacity = '0';
+      current.style.transform = 'translateY(-20px) scale(0.96)';
+      
+      setTimeout(() => {
+        current.classList.remove('active');
+        next.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 500);
+    }
+
+    // STEP 1 -> STEP 2
+    document.getElementById('startBtn').addEventListener('click', () => {
+      playMelody();
+      triggerConfetti(window.innerWidth / 2, window.innerHeight / 2, 50);
+      navigateToStep('step1', 'step2');
+    });
+
+    // STEP 2: ENVELOPE OPEN -> STEP 3
+    const envelope = document.getElementById('envelopeBox');
+    envelope.addEventListener('click', () => {
+      if (envelope.classList.contains('opened')) return;
+      envelope.classList.add('opened');
+      triggerConfetti(window.innerWidth / 2, window.innerHeight / 2, 60);
+
+      setTimeout(() => {
+        navigateToStep('step2', 'step3');
+        startTypewriter();
+      }, 900);
+    });
+
+    // STEP 3: TYPEWRITER EFFECT
+    const birthdayLetterMessage = "Happy 20th Birthday, Deekshitha! As you step into your twenties, I want you to know that you have to go on in life with unwavering strength. Whatever problems or storms come your way, you have to face them head-on. I believe in your power to overcome anything and eventually settle incredibly well in your future.";
+    let charIndex = 0;
+
+    function startTypewriter() {
+      const target = document.getElementById('typewriterTarget');
+      target.innerHTML = '<span class="cursor-blink"></span>';
+      
+      function typeChar() {
+        if (charIndex < birthdayLetterMessage.length) {
+          const char = birthdayLetterMessage.charAt(charIndex);
+          const cursor = target.querySelector('.cursor-blink');
+          target.insertBefore(document.createTextNode(char), cursor);
+          charIndex++;
+          setTimeout(typeChar, 34);
+        } else {
+          // Finished typing: Reveal next button
+          document.getElementById('toStep4Btn').style.display = 'inline-flex';
+        }
+      }
+      setTimeout(typeChar, 400);
+    }
+
+    // STEP 3 -> STEP 4
+    document.getElementById('toStep4Btn').addEventListener('click', () => {
+      triggerConfetti(window.innerWidth / 2, window.innerHeight / 2, 60);
+      navigateToStep('step3', 'step4');
+    });
+
+    // STEP 4 -> STEP 5
+    document.getElementById('toStep5Btn').addEventListener('click', () => {
+      triggerConfetti(window.innerWidth / 2, window.innerHeight / 2, 80);
+      navigateToStep('step4', 'step5');
+    });
+
+    // --- 3. 3D FLIP CARD TOUCH TOGGLE FOR MOBILE ---
+    document.querySelectorAll('.flip-card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+      });
+    });
+
+    // --- 4. "ARE YOU LOVING ME?" INTERACTIVE WIDGET LOGIC ---
+    const noBtn = document.getElementById('noLoveBtn');
+    const yesBtn = document.getElementById('yesLoveBtn');
+    const widgetAskView = document.getElementById('widgetAskView');
+    const widgetSuccessView = document.getElementById('widgetSuccessView');
+    const widgetSub = document.getElementById('widgetSub');
+
+    const evasiveTaunts = [
+      "Hey! Why are you trying to click No?! 🥺",
+      "Nu-uh! Dudu is way too fast! 💨",
+      "Nice try Deekshitha, but No isn't an option! 😜",
+      "Almost got it... just kidding! 😂",
+      "You're stuck loving me forever! 💖",
+      "Just press Yes already! 🥰"
+    ];
+    let tauntIndex = 0;
+
+    function evadeNoButton(e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
+      if (!noBtn.classList.contains('running')) {
+        noBtn.classList.add('running');
+      }
+
+      const btnWidth = noBtn.offsetWidth || 95;
+      const btnHeight = noBtn.offsetHeight || 42;
+      const margin = 25;
+
+      const maxX = window.innerWidth - btnWidth - margin;
+      const maxY = window.innerHeight - btnHeight - margin;
+
+      const randomX = Math.floor(Math.random() * (maxX - margin)) + margin;
+      const randomY = Math.floor(Math.random() * (maxY - margin)) + margin;
+
+      noBtn.style.left = `${randomX}px`;
+      noBtn.style.top = `${randomY}px`;
+
+      // Cycle funny subtitles
+      tauntIndex++;
+      widgetSub.innerText = evasiveTaunts[tauntIndex % evasiveTaunts.length];
+      widgetSub.style.color = '#ff85a1';
+    }
+
+    noBtn.addEventListener('mouseover', evadeNoButton);
+    noBtn.addEventListener('mouseenter', evadeNoButton);
+    noBtn.addEventListener('touchstart', evadeNoButton, { passive: false });
+    noBtn.addEventListener('pointerdown', evadeNoButton);
+    noBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      evadeNoButton();
+    });
+
+    yesBtn.addEventListener('click', () => {
+      noBtn.remove();
+      widgetAskView.style.display = 'none';
+      widgetSuccessView.style.display = 'block';
+      triggerConfetti(window.innerWidth / 2, window.innerHeight / 2, 100);
+    });
+
+    // --- 5. 100-PARTICLE CONFETTI CANNON (Trigonometry: Math.cos & Math.sin) ---
+    function triggerConfetti(originX, originY, count = 100) {
+      const palette = ['#ff4d6d', '#ff758f', '#ff85a1', '#00f2fe', '#f1c40f', '#9b59b6', '#ffffff'];
+
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement('div');
+        p.className = 'confetti-piece';
+
+        // Calculate angle and velocity using trigonometry
+        const angle = Math.random() * 2 * Math.PI;
+        const velocity = 80 + Math.random() * 260;
+        const xOffset = Math.cos(angle) * velocity;
+        const yOffset = Math.sin(angle) * velocity;
+
+        const size = Math.floor(Math.random() * 7) + 6;
+        p.style.width = `${size}px`;
+        p.style.height = `${size + (Math.random() > 0.5 ? 4 : 0)}px`;
+        p.style.backgroundColor = palette[Math.floor(Math.random() * palette.length)];
+
+        p.style.left = `${originX}px`;
+        p.style.top = `${originY}px`;
+
+        p.style.setProperty('--x', `${xOffset}px`);
+        p.style.setProperty('--y', `${yOffset}px`);
+
+        document.body.appendChild(p);
+
+        setTimeout(() => p.remove(), 1300);
+      }
+    }
+
+    // Click anywhere to burst confetti
+    document.addEventListener('click', (e) => {
+      // Don't burst on evasive 'No' button touches
+      if (e.target.id === 'noLoveBtn') return;
+      triggerConfetti(e.clientX, e.clientY, 35);
+    });
+  </script>
+</body>
+</html>
